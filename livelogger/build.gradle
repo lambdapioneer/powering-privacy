@@ -1,0 +1,28 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.8.0'
+    id 'application'
+}
+
+group = 'com.lambdapioneer'
+version = '0.1'
+
+repositories {
+    mavenCentral()
+}
+
+compileJava {
+    targetCompatibility = '1.8'
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
+
+dependencies {
+    implementation 'com.fazecast:jSerialComm:2.7.0'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test:1.8.0'
+}
+
+application {
+    mainClassName = 'MainKt'
+}
