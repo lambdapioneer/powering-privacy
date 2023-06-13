@@ -21,7 +21,7 @@ $ ./gradlew build
 ```
 
 
-## Running
+## Run
 
 Execute the following command to run the live logger:
 
@@ -56,3 +56,7 @@ However, when saving the currently visible region, the sampling is taken into ac
 
 ![Screenshot of the app showing a zoomed-in region while sampled](./screenshots/03-zoomed-in-sampled.png)
 
+
+## Docker
+
+There is no Dockerfile for this component, as the GUI is not really useful in a container.
