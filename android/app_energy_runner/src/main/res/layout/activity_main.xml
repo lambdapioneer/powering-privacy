@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button_sync"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="@string/button_sync" />
+
+        <Spinner
+            android:id="@+id/spinner_scenario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch_use_usb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/switch_usb_signaller" />
+
+    <RadioGroup
+        android:id="@+id/radio_button_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_button_wakelock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:checked="true"
+            android:text="@string/radio_button_wakelock" />
+
+        <RadioButton
+            android:id="@+id/radio_button_alarm_manager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_alarm_manager" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_init_usb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_init_usb" />
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_start" />
+
+    <CheckBox
+        android:id="@+id/checkbox_usb_connected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:enabled="false"
+        android:text="@string/checkbox_usb_connected" />
+
+    <CheckBox
+        android:id="@+id/checkbox_wait_for_sync"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:enabled="false"
+        android:text="@string/checkbox_wait_for_sync" />
+
+    <CheckBox
+        android:id="@+id/checkbox_usb_disconnected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:enabled="false"
+        android:text="@string/checkbox_usb_disconnected" />
+
+    <CheckBox
+        android:id="@+id/checkbox_operations_started"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:enabled="false"
+        android:text="@string/checkbox_operations_started" />
+
+    <CheckBox
+        android:id="@+id/checkbox_operations_finished"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:enabled="false"
+        android:text="@string/checkbox_operations_finished" />
+
+    <Button
+        android:id="@+id/button_stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_stop" />
+
+
+    <TextView
+        android:id="@+id/text_last_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+
+        />
+
+</LinearLayout>

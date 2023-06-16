@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">EnergyMetronom</string>
+    <string name="label_spinner_operation">Operation:</string>
+    <string name="label_spinner_pauses">Pauses:</string>
+    <string name="radio_button_service">Use Foreground Service</string>
+    <string name="radio_button_wakelock">Use WakeLock</string>
+    <string name="button_start">Start</string>
+    <string name="label_radios_mode">Operation Mode:</string>
+    <string name="notification_title">Metronom is running</string>
+    <string name="notification_message">Tick tock yay</string>
+    <string name="button_stop">Stop</string>
+</resources>

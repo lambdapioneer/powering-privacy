@@ -1,0 +1,62 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+// read configuration from local properties file
+Properties configurationProperties = new Properties()
+configurationProperties.load(project.rootProject.file("configuration.properties").newDataInputStream())
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+        multiDexEnabled = true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "String", "REPLY_SERVICE_IP", configurationProperties.getProperty("lib_common.reply_service.ip")
+        buildConfigField "String", "REPLY_SERVICE_SECRET", configurationProperties.getProperty("lib_common.reply_service.secret")
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            // the rust plugin does not include the .so in intermediate .aar files sometimes..
+            jniLibs.srcDirs = ['../lib_sphinxkt/build/rustJniLibs/android']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(":lib_sphinxkt")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.github.mik3y:usb-serial-for-android:3.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.lambdapioneer.argon2kt:argon2kt:1.4.0'
+    implementation 'androidx.test.ext:junit-ktx:1.1.5'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'org.assertj:assertj-core:3.11.1'
+}

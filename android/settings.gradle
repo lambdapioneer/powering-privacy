@@ -1,0 +1,5 @@
+rootProject.name = "Energy Runner"
+include ':lib_common'
+include ':lib_sphinxkt'
+include ':app_energy_runner'
+include ':app_metronom'

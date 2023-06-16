@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Energy Runner</string>
+    <string name="button_setup">Setup</string>
+    <string name="button_start">Start &amp; Bind</string>
+    <string name="sequence_file_valid">Sequence file valid</string>
+    <string name="signaller_setup">Signaller setup</string>
+    <string name="internet_access">Internet access</string>
+    <string name="switch_usb_signaller">Use UsbSignaller instead of LogCat</string>
+    <string name="switch_screen_kill">Enable proximity turns off screen</string>
+    <string name="switch_sound_enabled">Play sounds</string>
+    <string name="sdcard_mounted_and_files_ready">SD card mounted and files ready</string>
+    <string name="databases_ready">Databases ready</string>
+    <string name="button_sync">Sync</string>
+    <string name="title_activity_setup">SetupActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="checkbox_usb_connected">USB-to-serial connected</string>
+    <string name="checkbox_wait_for_sync">Executing sync sequence</string>
+    <string name="checkbox_usb_disconnected">USB-to-serial disconnected</string>
+    <string name="button_stop">Stop</string>
+    <string name="checkbox_operations_started">Operations started…</string>
+    <string name="checkbox_operations_finished">Operations finished \\o/</string>
+    <string name="button_init_usb">Init USB</string>
+    <string name="radio_button_wakelock">WakeLock</string>
+    <string name="radio_button_alarm_manager">AlarmManager</string>
+</resources>

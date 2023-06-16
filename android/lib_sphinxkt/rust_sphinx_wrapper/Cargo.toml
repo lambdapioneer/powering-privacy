@@ -1,0 +1,11 @@
+[package]
+name = "sphinx_wrapper"
+version = "0.1.0"
+
+[dependencies]
+sphinx = { git = "https://github.com/nymtech/sphinx", rev="c494250f2a78bed33a618d470792418eee932859" }
+regex2 = { git = "https://github.com/rust-lang/regex", package="regex" }
+jni = "0.19.0"
+
+[lib]
+crate_type = ["staticlib", "dylib"]
