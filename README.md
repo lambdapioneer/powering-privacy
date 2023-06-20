@@ -59,7 +59,7 @@ Micro studies measure the power consumption of single operations.
 For this, you first create a scenario file such as those in the [scenarios](scenarios) folder.
 
 Then you upload the scenario to the [web service](webservice/README.md) using the [upload-scenarios.sh](scripts/README.md) script.
-On the smartphone we use the [EnergyRunner](energyrunner/README.md) app to download the scenario.
+On the smartphone we use the [EnergyRunner](android/README.md) app to download the scenario.
 A USB-to-go adapter and a USB-serial-adapter are used to connect the smartphone to the measurement kit to synchronize their clocks.
 This process is described in the [walkthrough.md](walkthrough.md) document.
 

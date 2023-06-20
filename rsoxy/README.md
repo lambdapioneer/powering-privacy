@@ -51,7 +51,5 @@ The following commands build the Docker image and run the container with the ser
 
 ```
 $ docker build -t rsoxy .
-$ docker run -it --rm --volume=measurements:/usr/src/rsoxy/measurements --device=/dev/ttyACM0 rsoxy measurements/myfile.csv
+$ docker run -it --volume=$(pwd)/../measurements:/measurements --device=/dev/ttyACM0 --rm rsoxy rsoxy /measurements/myexperiment.csv
 ```
-
-Your data will be stored in the `measurements` volume which you can access under `/var/lib/docker/volumes/measurements/_data` on Linux.
