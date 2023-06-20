@@ -33,6 +33,15 @@ $ ./target/release/rsoxy <FILE> [PORT]
 
 where `<FILE>` is the path to the file to which the data will be written to and `[PORT]` is the optional path to the serial port device.
 
+The (stderr) output should start with debug information similar to the following:
+
+```
+>> # Compiled on 'Apr 13 2021' at '16:13:53'
+>> # mps:2897 (limit:2500)
+>> # input pin: 14
+>> start
+```
+
 
 ## Docker
 

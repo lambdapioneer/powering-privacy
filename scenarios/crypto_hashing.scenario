@@ -1,0 +1,29 @@
+10;P2000;idle-offline-begin;idle;duration_ms=2000
+
+# SHA
+10;P2000;hash-sha256;crypto-hash;alg=sha256,content_length_bytes=16384
+10;P2000;hash-sha512;crypto-hash;alg=sha512,content_length_bytes=16384
+10;P2000;idle-offline-begin;idle;duration_ms=250
+
+# Argon2
+10;P2000;argon2-t1m16p1-i;crypto-hash;alg=argon2,argon2_tcost=1,argon2_mcost_kib=16384,argon2_mode=i,argon2_parallelism=1
+10;P2000;argon2-t1m16p1-d;crypto-hash;alg=argon2,argon2_tcost=1,argon2_mcost_kib=16384,argon2_mode=d,argon2_parallelism=1
+10;P2000;argon2-t1m16p1-id;crypto-hash;alg=argon2,argon2_tcost=1,argon2_mcost_kib=16384,argon2_mode=id,argon2_parallelism=1
+
+10;P2000;argon2-t2m32p1-id;crypto-hash;alg=argon2,argon2_tcost=2,argon2_mcost_kib=32768,argon2_mode=id,argon2_parallelism=1
+10;P2000;argon2-t4m32p1-id;crypto-hash;alg=argon2,argon2_tcost=2,argon2_mcost_kib=32768,argon2_mode=id,argon2_parallelism=1
+10;P2000;argon2-t2m64p1-id;crypto-hash;alg=argon2,argon2_tcost=2,argon2_mcost_kib=65536,argon2_mode=id,argon2_parallelism=1
+
+10;P2000;argon2-t2m32p2-id;crypto-hash;alg=argon2,argon2_tcost=2,argon2_mcost_kib=32768,argon2_mode=id,argon2_parallelism=2
+10;P2000;argon2-t2m32p4-id;crypto-hash;alg=argon2,argon2_tcost=2,argon2_mcost_kib=32768,argon2_mode=id,argon2_parallelism=4
+
+10;P2000;argon2-owasp-1;crypto-hash;alg=argon2,argon2_tcost=1,argon2_mcost_kib=37888,argon2_mode=id
+10;P2000;argon2-owasp-2;crypto-hash;alg=argon2,argon2_tcost=2,argon2_mcost_kib=15360,argon2_mode=id
+10;P2000;idle-offline-begin;idle;duration_ms=250
+
+# pbkdf2
+10;P2000;pbkdf2-light-i;crypto-hash;alg=pbkdf2,pbkdf2_iterations=100000
+10;P2000;pbkdf2-heavy-i;crypto-hash;alg=pbkdf2,pbkdf2_iterations=1000000
+10;P2000;pbkdf2-owasp;crypto-hash;alg=pbkdf2,pbkdf2_iterations=710000
+
+10;P2000;idle-offline-begin;idle;duration_ms=2000

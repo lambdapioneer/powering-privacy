@@ -1,0 +1,44 @@
+10;P2000;idle-offline-begin;idle;duration_ms=2000
+
+# keygen
+10;P2000;keygen-rsa1024;crypto-keygen;alg=rsa1024
+10;P2000;keygen-rsa2048;crypto-keygen;alg=rsa2048
+10;P2000;keygen-rsa4096;crypto-keygen;alg=rsa4096
+#10;P2000;keygen-dsa1024;crypto-keygen;alg=dsa1024
+#10;P2000;keygen-dsa2048;crypto-keygen;alg=dsa2048
+#10;P2000;keygen-dsa3072;crypto-keygen;alg=dsa3072
+10;P2000;keygen-ecdsa224;crypto-keygen;alg=ecdsa224
+10;P2000;keygen-ecdsa256;crypto-keygen;alg=ecdsa256
+10;P2000;keygen-ecdsa384;crypto-keygen;alg=ecdsa384
+10;P2000;keygen-ecdsa521;crypto-keygen;alg=ecdsa521
+
+# signing
+10;P2000;sign-rsa1024;crypto-sign;alg=rsa1024
+10;P2000;sign-rsa2048;crypto-sign;alg=rsa2048
+10;P2000;sign-rsa4096;crypto-sign;alg=rsa4096
+#10;P2000;sign-dsa1024;crypto-sign;alg=dsa1024
+#10;P2000;sign-dsa2048;crypto-sign;alg=dsa2048
+#10;P2000;sign-dsa3072;crypto-sign;alg=dsa3072
+10;P2000;sign-ecdsa224;crypto-sign;alg=ecdsa224
+10;P2000;sign-ecdsa256;crypto-sign;alg=ecdsa256
+10;P2000;sign-ecdsa384;crypto-sign;alg=ecdsa384
+10;P2000;sign-ecdsa521;crypto-sign;alg=ecdsa521
+
+# verify
+10;P2000;verify-rsa1024;crypto-verify;alg=rsa1024
+10;P2000;verify-rsa2048;crypto-verify;alg=rsa2048
+10;P2000;verify-rsa4096;crypto-verify;alg=rsa4096
+#10;P2000;verify-dsa1024;crypto-verify;alg=dsa1024
+#10;P2000;verify-dsa2048;crypto-verify;alg=dsa2048
+#10;P2000;verify-dsa3072;crypto-verify;alg=dsa3072
+10;P2000;verify-ecdsa224;crypto-verify;alg=ecdsa224
+10;P2000;verify-ecdsa256;crypto-verify;alg=ecdsa256
+10;P2000;verify-ecdsa384;crypto-verify;alg=ecdsa384
+10;P2000;verify-ecdsa521;crypto-verify;alg=ecdsa521
+
+# sphinx
+10;P2000;sphinx-single;crypto-sphinx;iterations=1
+10;P2000;sphinx-multi-10;crypto-sphinx;iterations=10
+10;P2000;sphinx-multi-100;crypto-sphinx;iterations=100
+
+10;P2000;idle-offline-begin;idle;duration_ms=2000

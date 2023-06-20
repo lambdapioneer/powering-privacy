@@ -1,5 +1,10 @@
 # Build instructions
 
+Read the entire documentation before starting to build the hardware kit.
+
+> **Warning**
+> Working with batteries of any kind is dangerous. Only continue if you are certain that you know how to use the setup safely. In particular: if there are any deformations, heat, or smoke, disconnect everything immediately and bring the battery outside using a fire-safe container.
+
 
 ## Step 1: breadboard assembly (1 hour)
 
