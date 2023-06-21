@@ -1,4 +1,4 @@
-# Build instructions
+# Assembly instructions
 
 Read the entire documentation before starting to build the hardware kit.
 
@@ -110,4 +110,20 @@ Connect the red (positive) wires to the screw terminal of the INA219. The final 
 
 ![Final assembly](figures/complete.jpg)
 
+> **Warning**
+> The displayed image misses an important ground connection between the ground cables of the battery (black wires) and the breadboard. See [this image](figures/hw-overall.jpg) for a correct reference. Missing the ground connection will result in incorrect measurements.
+
 Insert the battery in the battery holder and turn on the phone.
+
+
+## Step 6: using the USB-to-serial adapter (1 hour)
+
+**Required material:** USB-OTG cable, USB-to-serial adapter, male to female jumper wires
+
+This step is only required for micro studies where we need to synchronize the clocks.
+
+Find the jumper on the side of the USB-to-serial adapter and set it to 5V. Use the jumper wires to connect GND to ground on the Arduino board, and RTS to port A0/D14 (the one with the resistor).
+
+With the USB-to-serial adapter, the layout should look similar to this:
+
+![overall](figures/hw-overall.jpg)

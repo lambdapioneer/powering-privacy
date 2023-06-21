@@ -13,7 +13,7 @@ The links are just to help disambiguate the parts. They are available from vario
 | INA219 | 1 | On a breakout board; [link to adafruit.com](https://www.adafruit.com/product/904) |
 | Breadboard | 1 | Half-size; [link to adafruit.com](https://www.adafruit.com/product/4539) |
 | Leaf battery connector | 1 | TE 1981061-1; [link to te.com](https://www.te.com/usa-en/product-1981061-1.html) |
-| USB-to-serial | 1 | With FTDI FT232RL chip; [link to amazon.com](https://www.amazon.com/gp/product/B07BBPX8B8/)
+| USB-to-serial adapter | 1 | With FTDI FT232RL chip; [link to amazon.com](https://www.amazon.com/gp/product/B07BBPX8B8/)
 | USB OTG cable | 1 | For example: [link to amazon.com](https://www.amazon.com/UGREEN-Adapter-Samsung-Controller-Smartphone/dp/B00LN3LQKQ/) |
 | Motorola Moto E6 Plus | 1 | Available from third-party vendors; [link to gsmarena.com](https://www.gsmarena.com/motorola_moto_e6_plus-9831.php) |
 

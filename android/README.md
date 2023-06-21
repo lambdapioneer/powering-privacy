@@ -22,6 +22,8 @@ The `lib_sphinxkt` uses the Mozilla "Rust Android Gradle Plugin" to build and li
 Follow their [setup instruction](https://github.com/mozilla/rust-android-gradle#usage) to setup all dependencies.
 You might find that it helpful to first try your local Rust setup with the simpler [rsoxy serial logger project](../rsoxy/README.md).
 
+Before building, update the `configuration.properties` file with the IP address for the web service.
+
 Once you opened the project and installed the Rust Android plugin dependencies, you can build the project (Build > Make Project).
 
 Alternatively, you can build the project from the command line:
