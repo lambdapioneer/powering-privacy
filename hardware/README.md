@@ -15,7 +15,7 @@ The following pictures show the full setup in the real world.
 
 ## Setup & Build
 
-For building the hardware kit start by reading both the [Bill of Material](bill-of-materials.md) and the [Build Instructions](build-instructions.md) completely.
+For building the hardware kit start by reading both the [Bill of Material](bill-of-materials.md) and the [Assembly Instructions](assembly-instructions.md) completely.
 
 ## Usage
 
