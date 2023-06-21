@@ -1,0 +1,71 @@
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+index 718c613a..d34eec76 100644
+--- a/app/src/main/res/values/strings.xml
++++ b/app/src/main/res/values/strings.xml
+@@ -216,7 +216,8 @@
+     <string formatted="true" name="snowflake_proxy_enabled">Snowflake proxy mode enabled</string>
+     <string name="snowflake_proxy_msg_title">Show Connection Notification</string>
+     <string name="snowflake_proxy_msg_description">Show a message when your snowflake helps someone circumvent censorship</string>
+-
++    <string name="pref_connection_padding_force_off_summary">Overrides any other setting</string>
++    <string name="pref_connection_padding_force_off">Force off connection padding</string>
+ 
+ 
+ </resources>
+diff --git a/app/src/main/res/xml/preferences.xml b/app/src/main/res/xml/preferences.xml
+index 1156ec4f..8ab09696 100644
+--- a/app/src/main/res/xml/preferences.xml
++++ b/app/src/main/res/xml/preferences.xml
+@@ -139,6 +139,12 @@
+             android:key="pref_connection_padding"
+             android:summary="@string/pref_connection_padding_summary"
+             android:title="@string/pref_connection_padding" />
++        <CheckBoxPreference
++            android:defaultValue="false"
++            android:enabled="true"
++            android:key="pref_connection_padding_force_off"
++            android:summary="@string/pref_connection_padding_force_off_summary"
++            android:title="@string/pref_connection_padding_force_off" />
+         <CheckBoxPreference
+             android:defaultValue="true"
+             android:enabled="true"
+diff --git a/orbotservice/src/main/java/org/torproject/android/service/OrbotConstants.java b/orbotservice/src/main/java/org/torproject/android/service/OrbotConstants.java
+index f25d46b9..55af0294 100644
+--- a/orbotservice/src/main/java/org/torproject/android/service/OrbotConstants.java
++++ b/orbotservice/src/main/java/org/torproject/android/service/OrbotConstants.java
+@@ -26,6 +26,7 @@ public interface OrbotConstants {
+     String PREF_ISOLATE_DEST = "pref_isolate_dest";
+ 
+     String PREF_CONNECTION_PADDING = "pref_connection_padding";
++    String PREF_CONNECTION_PADDING_FORCE_OFF = "pref_connection_padding_force_off";
+     String PREF_REDUCED_CONNECTION_PADDING = "pref_reduced_connection_padding";
+     String PREF_CIRCUIT_PADDING = "pref_circuit_padding";
+     String PREF_REDUCED_CIRCUIT_PADDING = "pref_reduced_circuit_padding";
+diff --git a/orbotservice/src/main/java/org/torproject/android/service/OrbotService.java b/orbotservice/src/main/java/org/torproject/android/service/OrbotService.java
+index 7e82d569..5c5017c8 100644
+--- a/orbotservice/src/main/java/org/torproject/android/service/OrbotService.java
++++ b/orbotservice/src/main/java/org/torproject/android/service/OrbotService.java
+@@ -586,12 +586,18 @@ public class OrbotService extends VpnService implements OrbotConstants {
+ 
+         extraLines.append("HTTPTunnelPort ").append(httpPortPref).append(isolate).append('\n');
+ 
+-        if (prefs.getBoolean(OrbotConstants.PREF_CONNECTION_PADDING, false)) {
+-            extraLines.append("ConnectionPadding 1").append('\n');
+-        }
+ 
+-        if (prefs.getBoolean(OrbotConstants.PREF_REDUCED_CONNECTION_PADDING, true)) {
+-            extraLines.append("ReducedConnectionPadding 1").append('\n');
++
++        if (prefs.getBoolean(OrbotConstants.PREF_CONNECTION_PADDING_FORCE_OFF, false)) {
++            extraLines.append("ConnectionPadding 0").append('\n');
++        } else {
++            if (prefs.getBoolean(OrbotConstants.PREF_CONNECTION_PADDING, false)) {
++                extraLines.append("ConnectionPadding 1").append('\n');
++            }
++
++            if (prefs.getBoolean(OrbotConstants.PREF_REDUCED_CONNECTION_PADDING, true)) {
++                extraLines.append("ReducedConnectionPadding 1").append('\n');
++            }
+         }
+ 
+         if (prefs.getBoolean(OrbotConstants.PREF_CIRCUIT_PADDING, true)) {

@@ -19,6 +19,7 @@ You will need a local computer with:
 - At least 16 GiB RAM
 - At least 200 GiB free disk space
 - A free USB port to connect to the Arduino
+- A WiFi where you can connect the smartphone and the computer to the same network
 
 In preparation for building the individual components, you should install the following dependencies before beginning:  
 
@@ -56,7 +57,20 @@ Start recording a test trace with `rsoxy` in `measurements/e0-test-trace.csv`.
 > **Note**
 > If you use the sample traces, copy the `e0/demo_trace_wifi_display_onoff_20230620_1600.csv` file to your `/measurements` directory.
 
+The first lines of (stderr) output from `rsoxy` should look like this:
+
+```
+>> # Compiled on 'June 1 2023' at '13:37:42'
+>> # mps:2897 (limit:2500)
+>> # input pin: 14
+>> start
+```
+
 Open the `livelogger` and tail the current measurement file. You should see the data being logged in real-time and change as you use the device. For instance, try changing the display brightness or turn the display off and observe how it enters low-power mode after a few seconds. If you are using the sample file, you should see high power consumption at the beginning (with a small dip where the brightness of the display is changed), and then lower power after the display is turned off.
+
+The GUI should look similar to this:
+
+![livelogger GUI](livelogger/screenshots/for-walkthrough.png)
 
 If you got to here, well done! Most of the dependencies and configurations are now set up and you can proceed to the next steps. If built your own hardware kit, you can be quite confident that it is working correctly.
 
@@ -138,7 +152,153 @@ For the final step, the Jupyter Notebooks will only use the `_sections.csv` file
 
 Follow the instructions in [notebooks/README.md](notebooks/README.md) to run the `notebooks/jupyter_crypto_sections.ipynb` notebook. If you use your own measurements, update the filenames in the second cell.
 
+The output of the table should look like this:
+
+```latex
+\midrule
+Gen RSA-1024 & 116.47 & 76.36 \\ 
+Gen RSA-2048 & 796.05 & 597.84 \\ 
+Gen RSA-4096 & 2898.43 & 2042.77 \\ 
+Sign RSA-1024 & 1.88 & 0.35 \\ 
+Sign RSA-2048 & 6.22 & 1.22 \\ 
+Sign RSA-4096 & 26.73 & 4.68 \\ 
+Verify RSA-1024 & 0.34 & 0.10 \\ 
+Verify RSA-2048 & 0.50 & 0.08 \\ 
+Verify RSA-4096 & 0.75 & 0.10 \\ 
+\midrule
+Gen EC-224 & 1.11 & 0.06 \\ 
+Gen EC-256 & 0.51 & 0.05 \\ 
+Gen EC-384 & 2.65 & 0.07 \\ 
+Gen EC-521 & 5.25 & 0.27 \\ 
+Sign EC-224 & 1.43 & 0.15 \\ 
+Sign EC-256 & 0.83 & 0.18 \\ 
+Sign EC-384 & 3.24 & 0.16 \\ 
+Sign EC-521 & 6.27 & 0.10 \\ 
+Verify EC-224 & 1.52 & 0.05 \\ 
+Verify EC-256 & 1.54 & 0.08 \\ 
+Verify EC-384 & 3.43 & 0.07 \\ 
+Verify EC-521 & 6.74 & 0.15 \\ 
+\midrule
+Sphinx (1x) & 9.66 & 0.31 \\ 
+Sphinx (10x) & 86.34 & 8.07 \\ 
+Sphinx (100x) & 842.44 & 11.40 \\ 
+```
+
 
 ## E2: Macro study of Tor
 
-tbd
+In this experiment you measure long protocol runs and save them in individual files. In particular, you will measure the energy consumption of Orbot over WiFi for both the idle and web browsing scenarios and then compare it with not using Tor.
+
+> **Note**
+> If you use the sample traces, copy the files from `e2/` file to your `/measurements` directory and skip to step E2.4.
+
+
+### E2.1: Install EnergyMetronom (1 human-hour)
+
+Follow the instructions in [android/README.md](android/README.md) to build and install the `metronom` Android app. Afterwards, long press on the app and go to the app info. There, enable "Display over other apps" which is required to show the overlay window for the web browsing task. Also, and disable _all_ battery optimizations. This is important to ensure that the app is not killed in the background.
+
+Test the app by selecting the settings to open the news website every 10 seconds and observe that an overlay window appears and disappears.
+
+
+### E2.2: Install Orbot (1 human-hour)
+
+Clone the [Orbot repository](https://github.com/guardianproject/orbot/) and checkout commit `b06e05c4` (version 16.6.0-RC4). Install the app following their instructions and using `./gradlew installFullpermRelease`. As this is a release build, you might need to create a signing key first (see https://developer.android.com/studio/publish/app-signing#generate-key).
+
+Test the app on the device. In particular, enable VPN mode and verify that you can access regular websites through Tor. This can be done by opening https://check.torproject.org/ in the phone browser.
+
+In the setting make sure to _enable_ "Connection padding" and _disable_ "Reduced connection padding". This ensures that regular connection padding is forced on. 
+
+> **Note**
+> For our experiments we have written a [patch file](android/orbot-add-setting-to-disable-connection-padding.patch) that adds a new setting to disable connection padding. This is not needed for the walkthrough, but you might want to apply it if you run your own experiments.
+
+
+### E2.3: Run the experiments (4×1 experiment-hour)
+
+Now you will run four experiments to measure the power consumption of all combinations. In the terminology of the later Jupyter notebook scripts we will have:
+
+- `radio`:
+  - `wifi`
+- `activity`:
+  - `idle`
+  - `web`
+- `networks`
+  - `direct` (i.e. no Tor)
+  - `fullpad` (i.e. Tor with full padding)
+
+
+As you record the power consumption with `rsoxy`, make sure to name them according to this scheme: `measurements/tor_<radio>_<activity>_<network>.csv` (e.g. `measurements/tor_wifi_idle_direct.csv`). This is important as the analysis script will use the filenames to find the recordings.
+
+As you record you can use the livelogger tool to observe the current measurements to quickly identify andy issues.
+
+Now run the following experiments:
+
+- `activity=idle`
+  - `network=direct`
+    - Turn off the display, wait 30 seconds and then record the energy measurements for at least 10 minutes.
+  - `network=fullpad`
+    - Enable Tor in VPN mode with the settings from above. Turn off the display, wait 30 seconds and then record the energy measurements for at least 10 minutes.
+- `activity=web`
+  - `network=direct`
+    - Start the metronom with visiting the website every 60 seconds. Wait until it was displayed successfully one time. Then turn off the display, wait 30 seconds and then record the energy measurements for at least 10 minutes.
+  - `network=fullpad`
+    - Enable Tor in VPN mode with the settings from above. Start the metronom with visiting the website every 60 seconds. Wait until it was displayed successfully one time. Then turn off the display, wait 30 seconds and then record the energy measurements for at least 10 minutes.
+
+Afterwards, you should have the following files (each around 20-25 MiB in size) in your measurements directory:
+
+```
+tor_wifi_idle_direct.csv
+tor_wifi_idle_fullpad.csv
+tor_wifi_web_direct.csv
+tor_wifi_web_fullpad.csv
+```
+  
+### E2.4: Analyse the measurements (1 human-hour)
+
+Follow the instructions in [notebooks/README.md](notebooks/README.md) to run the `notebooks/jupyter_tor.ipynb` notebook.
+
+The graph output should look like this:
+
+![Plot output](notebooks/jupyter-tor-screenshot-for-walkthrough.png)
+
+And the table output should look like this:
+
+```latex
+\multicolumn{4}{c}{\textit{Idle}}\\
+\midrule
+4G & Direct & nan & nan\% \\ 
+4G & Tor w/o Padding & nan & nan\% \\ 
+4G & Tor w/ Red. Padding & nan & nan\% \\ 
+4G & Tor w/ Full Padding & nan & nan\% \\ 
+\midrule
+WiFi & Direct & 23.4 & 0.3\% \\ 
+WiFi & Tor w/o Padding & nan & nan\% \\ 
+WiFi & Tor w/ Red. Padding & nan & nan\% \\ 
+WiFi & Tor w/ Full Padding & 87.3 & 1.1\% \\ 
+\midrule
+\multicolumn{4}{c}{\textit{Web (.com)}}\\
+\midrule
+4G & Direct & nan & nan\% \\ 
+4G & Tor w/o Padding & nan & nan\% \\ 
+4G & Tor w/ Red. Padding & nan & nan\% \\ 
+4G & Tor w/ Full Padding & nan & nan\% \\ 
+\midrule
+WiFi & Direct & 52.0 & 0.6\% \\ 
+WiFi & Tor w/o Padding & nan & nan\% \\ 
+WiFi & Tor w/ Red. Padding & nan & nan\% \\ 
+WiFi & Tor w/ Full Padding & 122.9 & 1.5\% \\ 
+\midrule
+\multicolumn{4}{c}{\textit{Web (.onion)}}\\
+\midrule
+4G & Direct & nan & nan\% \\ 
+4G & Tor w/o Padding & nan & nan\% \\ 
+4G & Tor w/ Red. Padding & nan & nan\% \\ 
+4G & Tor w/ Full Padding & nan & nan\% \\ 
+\midrule
+WiFi & Direct & nan & nan\% \\ 
+WiFi & Tor w/o Padding & nan & nan\% \\ 
+WiFi & Tor w/ Red. Padding & nan & nan\% \\ 
+WiFi & Tor w/ Full Padding & nan & nan\% \\ 
+\midrule
+```
+
+Note that some bars and entries are missing when comparing to the table. These are because we only recorded a subset of the parameter space.

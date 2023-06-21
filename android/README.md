@@ -13,6 +13,8 @@ This app also synchronizes with the data logger using USB serial and can later u
 
 ![Overview of components](./figures/00-android-overview.drawio.png)
 
+This folder also contains a `orbot.*.patch` file that can applied to the Orbot source code to add an option for disabling connection padding. See Step E2.2 in the [walkthrough](../walkthrough.md) for details.
+
 
 ## Setup and build
 

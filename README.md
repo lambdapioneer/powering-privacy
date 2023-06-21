@@ -13,7 +13,7 @@ This repository contains:
 - Software and instructions to analyze results from these studies and generate plots
 - Sample traces to allow evaluation without having to build the hardware kit
 
-**NOTE FOR AEC'23:** To verify these claims for the artifact evaluation process, please follow the [walkthrough.md](walkthrough.md) file.
+**➡️ NOTE FOR AEC'23:** To verify these claims for the artifact evaluation process, please follow the [walkthrough.md](walkthrough.md) file.
 
 
 ## Requirements
