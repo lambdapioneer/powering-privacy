@@ -14,7 +14,7 @@ import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
 private val SERVER_IP = BuildConfig.WEB_SERVICE_IP
-private val SERVER_PORT = BuildConfig.WEB_SERVICE_IP
+private val SERVER_PORT = BuildConfig.WEB_SERVICE_PORT
 private val SERVER_URI_SCENARIOS = "http://$SERVER_IP:$SERVER_PORT/energy/scenarios.zip"
 private val SERVER_URI_ANDROID_LOG = "http://$SERVER_IP:$SERVER_PORT/energy/android_log"
 
