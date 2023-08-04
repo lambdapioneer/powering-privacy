@@ -1,7 +1,11 @@
 # Powering Privacy
 
-This repository contains the artifacts from the paper: Powering Privacy: On the Energy Demand and Feasibility of Anonymity Networks on Smartphones (to be published at USENIX Security '23).
-It is under submission for the Artifact Evaluation process.
+This repository contains the artifacts from the paper: [Powering Privacy: On the Energy Demand and Feasibility of Anonymity Networks on Smartphones](https://www.usenix.org/conference/usenixsecurity23/).
+It is has been submitted to the Artifact Evaluation process and has been awarded all badges we applied for.
+Once the artifact appendix has been published, we will link to it here.
+
+![USENIX Artifact Evaluation Badge Available](badge-available-small.png)
+![USENIX Artifact Evaluation Badge Functional](badge-functional-small.png)
 
 
 ## Overview
@@ -13,7 +17,7 @@ This repository contains:
 - Software and instructions to analyze results from these studies and generate plots
 - Sample traces to allow evaluation without having to build the hardware kit
 
-**➡️ NOTE FOR AEC'23:** To verify these claims for the artifact evaluation process, please follow the [walkthrough.md](walkthrough.md) file.
+To verify these claims for the artifact evaluation process, please follow the [walkthrough.md](walkthrough.md) file.
 
 
 ## Requirements
@@ -25,6 +29,14 @@ Further, we assume that you are comfortable doing the following tasks:
 - Usage of standard developer tools (git, ssh, etc.)
 - Basic familiarity with Python 3, Jupyter Notebooks, Android, and Rust
 - Creating and running Docker images
+
+We tested the setup with the following software:
+- Ubuntu 20.04.6 LTS ([download here](https://releases.ubuntu.com/focal/))
+- Python 3.8.10 (installed via apt-get)
+- Docker 24.0.4 ([downloaded from here](https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script))
+- Rust rustc 1.71.0-stable ([downloaded from here](https://rustup.rs/))
+- Android Studio 2022.1.1 ([downloaded from here](https://developer.android.com/studio/archive))
+- Gradle wrapper version 7.5 (installed with the tools within the `android` folder)
 
 
 ## Architecture overview

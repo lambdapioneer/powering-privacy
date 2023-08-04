@@ -6,9 +6,6 @@ This document walks you step-by-step through all three artifact evaluation exper
 - **E1:** Performing a micro study to measure individual cryptographic operations
 - **E2:** Performing a macro study to measure the performance of Tor vs direct website access over WiFi
 
-> **Note**
-> We understand that building the hardware kit might not be possible within the constraints of the artifact evaluation process. Please see the Artifact Appendix to see whether you might be able to acquire a hardware kit from us or use the sample traces instead.
-
 The experiments provide time estimates in _human-hours_ which are the total work time, which can be interrupted, and _experiment-hours_ which are the durations of the experiments which cannot be interrupted.
 
 
