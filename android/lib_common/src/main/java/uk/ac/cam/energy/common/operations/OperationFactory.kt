@@ -19,6 +19,9 @@ object OperationFactory {
         register("network-multi", ::NetworkContinuousSocketOperation)
 
         register("loopix", ::LoopixOperation)
+
+        register("snark-prove", ::SnarkProofOperation)
+        register("snark-verify", ::SnarkVerifyOperation)
     }
 
     private fun register(

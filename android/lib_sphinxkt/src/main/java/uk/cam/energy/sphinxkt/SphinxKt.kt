@@ -1,9 +1,7 @@
 package uk.cam.energy.sphinxkt
 
 import android.util.Log
-import androidx.annotation.Keep
 
-@Keep
 object SphinxKt {
 
     fun init() {

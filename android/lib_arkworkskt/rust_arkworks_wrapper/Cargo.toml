@@ -1,0 +1,37 @@
+[package]
+name = "arkworks_wrapper"
+version = "0.1.0"
+
+[dependencies]
+regex2 = { git = "https://github.com/rust-lang/regex", package="regex" }
+jni = "0.19.0"
+
+ark-groth16 = { version = "0.4.0", features = ["parallel"] }
+
+# from the groth16 deps
+ark-ec = { version = "0.4.0", default-features = false }
+ark-ff = { version = "0.4.0", default-features = false }
+ark-crypto-primitives = { version = "0.4.0", default-features = false, features = ["snark", "sponge"] }
+ark-poly = { version = "0.4.0", default-features = false }
+ark-relations = { version = "0.4.0", default-features = false }
+ark-std = { version = "0.4.0", default-features = false }
+ark-r1cs-std = { version = "0.4.0", default-features = false, optional = true }
+
+# from the groth16 dev-deps
+ark-bls12-381 = { version = "0.4.0", default-features = false, features = ["curve"] }
+ark-bls12-377 = { version = "0.4.0", default-features = false, features = ["curve"] }
+ark-bw6-761 = { version = "0.4.0", default-features = false }
+ark-mnt4-298 = { version = "0.4.0", default-features = false, features = ["r1cs", "curve"] }
+ark-mnt6-298 = { version = "0.4.0", default-features = false, features = ["r1cs"] }
+ark-mnt4-753 = { version = "0.4.0", default-features = false, features = ["r1cs", "curve"] }
+ark-mnt6-753 = { version = "0.4.0", default-features = false, features = ["r1cs"] }
+
+tracing = { version = "0.1", default-features = false, features = [ "attributes" ], optional = true }
+derivative = { version = "2.0", features = ["use_core"], optional = true}
+
+[features]
+std = ["ark-ff/std", "ark-ec/std", "ark-poly/std", "ark-relations/std", "ark-crypto-primitives/std", "ark-std/std" ]
+r1cs = [ "ark-crypto-primitives/r1cs", "ark-r1cs-std", "tracing", "derivative" ]
+
+[lib]
+crate_type = ["staticlib", "dylib"]

@@ -1,5 +1,6 @@
 rootProject.name = "Energy Runner"
 include ':lib_common'
 include ':lib_sphinxkt'
+include ':lib_arkworkskt'
 include ':app_energy_runner'
 include ':app_metronom'

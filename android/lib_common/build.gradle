@@ -33,6 +33,7 @@ android {
         main {
             // the rust plugin does not include the .so in intermediate .aar files sometimes..
             jniLibs.srcDirs = ['../lib_sphinxkt/build/rustJniLibs/android']
+            jniLibs.srcDirs = ['../lib_arkworkskt/build/rustJniLibs/android']
         }
     }
 
@@ -47,6 +48,7 @@ android {
 }
 
 dependencies {
+    implementation project(":lib_arkworkskt")
     implementation project(":lib_sphinxkt")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.9.0'

@@ -32,8 +32,8 @@ android {
 apply plugin: 'org.mozilla.rust-android-gradle.rust-android'
 
 cargo {
-    module = "rust_sphinx_wrapper"
-    libname = "sphinx_wrapper"
+    module = "rust_arkworks_wrapper"
+    libname = "arkworks_wrapper"
     targets = ["arm", "x86", "x86_64", "arm64"]
     verbose = false
     profile = 'release'
@@ -46,6 +46,7 @@ tasks.whenTaskAdded { task ->
 }
 
 dependencies {
+    implementation 'androidx.core:core-ktx:1.9.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test:runner:1.5.2'
