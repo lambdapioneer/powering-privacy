@@ -2,7 +2,7 @@
 
 This repository contains the artifacts from the paper: [Powering Privacy: On the Energy Demand and Feasibility of Anonymity Networks on Smartphones](https://www.usenix.org/conference/usenixsecurity23/).
 It is has been submitted to the Artifact Evaluation process and has been awarded all badges we applied for.
-Once the artifact appendix has been published, we will link to it here.
+You can find the [artifact appendix here](https://www.usenix.org/system/files/usenixsecurity23-appendix-hugenroth.pdf).
 
 ![USENIX Artifact Evaluation Badge Available](badge-available-small.png)
 ![USENIX Artifact Evaluation Badge Functional](badge-functional-small.png)
